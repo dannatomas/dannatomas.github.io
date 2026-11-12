@@ -79,7 +79,7 @@ button{font-family:inherit}
 .next{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;text-decoration:none;color:#FFFAC9;padding:36px 0;border-top:1.5px solid rgba(255,250,201,.4)}
 .next b{font-weight:900;font-size:clamp(40px,7vw,110px);letter-spacing:-.045em;line-height:.9;text-transform:uppercase;transition:color .25s,transform .45s cubic-bezier(.2,.9,.3,1.3);display:inline-block}
 .next:hover b{color:#C7C804;transform:translateX(14px)}
-.phero{padding:clamp(120px,14vw,170px) 0 clamp(50px,6vw,80px);display:flex;flex-direction:column;gap:26px}
+.phero{padding-top:clamp(120px,14vw,170px);padding-bottom:clamp(50px,6vw,80px);display:flex;flex-direction:column;gap:26px}
 .ugc-brand{display:flex;flex-direction:column;gap:14px}
 .ugc-brand h3{margin:0;display:flex;align-items:center;gap:10px;font-weight:900;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.03em;text-transform:uppercase}
 .ugc-brand h3 i{width:12px;height:12px;border-radius:50%;display:inline-block}
@@ -100,6 +100,36 @@ button{font-family:inherit}
 @media (max-width:980px){.nav-links{display:none}.menu-btn{display:inline-flex}}
 @media (max-width:640px){.clink small{min-width:0}.nav-contact-label{display:none}.reel{width:calc(50vw - 30px)}.nav-in{gap:8px}.lang{padding:0 10px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.has-io .rv:not(.in){opacity:1;transform:none}}
+/* ===== mobile polish (iPhone / Android) ===== */
+.nav-ico-m{display:none}
+.t-touch{display:none}
+@media (hover:none){.t-fine{display:none}.t-touch{display:inline}}
+@media (max-width:640px){
+.nav-ico-d{display:none}.nav-ico-m{display:block}
+.nav-in{padding:10px 16px}
+.cline{font-size:clamp(44px,15.4vw,96px);line-height:.84}
+.clink{min-height:64px;font-size:19px;padding:0 2px}
+.clink small{font-size:10px;letter-spacing:.24em}
+.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fact{padding:22px 12px 22px 0}
+.fact:last-child:nth-child(odd){grid-column:1/-1}
+.facts.f3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts.f3 .fact:first-child{grid-column:1/-1}
+.facts.f3 .fact:last-child{grid-column:auto}
+.vgrid>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 7px)}
+.case{gap:28px}
+.case-media{gap:14px;width:100%}
+.case-media>.media-col:has(.phone){width:calc(50% - 7px)!important}
+.case-media>.media-col:has(.land){width:100%!important}
+.case-media>.media-col:has(.land)+.media-col:has(.phone):last-child{width:62%!important}
+.case-media .cap{font-size:10px;letter-spacing:.18em}
+.tl-head{flex-direction:column;align-items:flex-start;gap:6px}
+.svc li{padding:14px 4px}
+.svc li::before{min-width:24px}
+.next b{font-size:clamp(40px,13vw,70px)}
+.sub h2{font-size:clamp(40px,12vw,64px)}
+}
+@media (max-width:374px){.lang{padding:0 8px;font-size:12px}.btn{padding:0 16px}}
 </style>
 </head>
 <body>
@@ -118,12 +148,12 @@ button{font-family:inherit}
 </div>
 <div style="display: flex; gap: 8px; align-items: center; position: relative">
 <button class="lang" type="button" onClick="{{toggleLang}}" aria-label="{{t.langLabel}}"><span class="{{esCls}}">ES</span><span aria-hidden="true">/</span><span class="{{enCls}}">EN</span></button>
-<button class="btn" type="button" aria-expanded="{{contactOpen}}" onClick="{{toggleContact}}"><span class="nav-contact-label">{{t.contact}}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
+<button class="btn" type="button" aria-label="{{t.contact}}" aria-expanded="{{contactOpen}}" onClick="{{toggleContact}}"><span class="nav-contact-label">{{t.contact}}</span><svg class="nav-ico-m" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"></path></svg><svg class="nav-ico-d" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
 <button class="btn btn-ghost menu-btn" type="button" style="color: #FFFAC9" aria-expanded="{{menuOpen}}" onClick="{{toggleMenu}}">{{menuLabel}}</button>
 <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
 <div class="drop">
 <a href="https://instagram.com/danntomas_" target="_blank" rel="noopener">Instagram <span style="font-size: 12px; opacity: .7">@danntomas_</span></a>
-<a href="https://www.tiktok.com/@nnarrenn" target="_blank" rel="noopener">TikTok <span style="font-size: 12px; opacity: .7">@nnarrenn</span></a>
+<a href="https://www.tiktok.com/@naarrenn" target="_blank" rel="noopener">TikTok <span style="font-size: 12px; opacity: .7">@naarrenn</span></a>
 <a href="https://wa.me/522211738472" target="_blank" rel="noopener">WhatsApp <span style="font-size: 12px; opacity: .7">+52 221 173 8472</span></a>
 <a href="mailto:danna.tomii@gmail.com">{{t.mail}} <span style="font-size: 12px; opacity: .7">danna.tomii@gmail.com</span></a>
 </div>
@@ -179,7 +209,7 @@ button{font-family:inherit}
 </div>
 <div style="height: 1.5px; background: rgba(255, 250, 201, .35)"></div>
 <div style="display: flex; flex-direction: column; gap: 10px">
-<p style="margin: 0; font-weight: 800; font-size: 13px; letter-spacing: .24em; text-transform: uppercase">TikTok · @nnarrenn</p>
+<p style="margin: 0; font-weight: 800; font-size: 13px; letter-spacing: .24em; text-transform: uppercase">TikTok · @naarrenn</p>
 <div class="stat-row">
 <div><strong>7.3K</strong><span><span class="es">seguidores</span><span class="en">followers</span></span></div>
 <div><strong>182.5K</strong><span><span class="es">visualizaciones</span><span class="en">views</span></span></div>
@@ -212,7 +242,7 @@ button{font-family:inherit}
 <button class="clink" type="button" onClick="{{copyEmail}}" aria-label="{{t.copyLabel}}"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>{{t.mail}}</small>danna.tomii@gmail.com</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
 <a class="clink" href="https://wa.me/522211738472" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>WhatsApp</small>+52 221 173 8472</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 <a class="clink" href="https://instagram.com/danntomas_" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>Instagram</small>@danntomas_</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
-<a class="clink" href="https://www.tiktok.com/@nnarrenn" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>TikTok</small>@nnarrenn</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
+<a class="clink" href="https://www.tiktok.com/@naarrenn" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>TikTok</small>@naarrenn</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 </div>
 <a class="next" href="modelaje.html" data-cur="ver"><span class="lbl"><span class="es">Siguiente</span><span class="en">Next</span></span><b><span class="es">Modelaje →</span><span class="en">Modeling →</span></b></a>
 <footer style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; letter-spacing: .2em; text-transform: uppercase">

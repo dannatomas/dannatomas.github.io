@@ -93,6 +93,8 @@ mark{background:none;color:#6C11DF;font-weight:800}
 .line{display:block}
 .hrow{display:flex;justify-content:center;white-space:nowrap;font-weight:900;font-size:clamp(50px,13.4vw,224px);line-height:.8;letter-spacing:-.045em;text-transform:uppercase;user-select:none}
 .hrow+.hrow{margin-top:-.2em}
+.hrow{gap:0 .24em}.hw{display:inline-flex}
+.hero-phone{width:clamp(88px,16vw,250px)}
 .r1{color:#FFFAC9}.r2{color:#6C11DF}.r3{color:transparent;-webkit-text-stroke:2px #D9C6FA}
 .hero-phone-pos{position:absolute;left:50%;top:50%;transform:translate(-50%,-48%);z-index:5}
 .mq{overflow:hidden;background:#6C11DF;color:#FFFAC9;transform:rotate(-2deg);margin:0 -40px;padding:20px 0;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
@@ -118,6 +120,55 @@ mark{background:none;color:#6C11DF;font-weight:800}
 @media (max-width:640px){.r3{-webkit-text-stroke:1.2px #D9C6FA}.outline{-webkit-text-stroke:1.2px currentColor}.clink small{min-width:0}.nav-contact-label{display:none}.idx-row{grid-template-columns:minmax(0,1fr) auto}.idx-row .n{display:none}.nav-in{gap:8px}.lang{padding:0 10px}}
 @media (hover:none){.idx-thumb{display:block}.pv{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.has-io .rv:not(.in){opacity:1;transform:none}.has-io .rv-mask:not(.in){clip-path:none}}
+/* ===== mobile polish (iPhone / Android) ===== */
+@media (max-width:640px){
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 40px!important}
+.hrow{flex-direction:column;align-items:center;font-size:25.6vw;line-height:.74}
+.hero svg.bob{left:auto!important;right:6%;bottom:-7%!important}
+.hrow .hw+.hw{margin-top:-.04em}
+.hrow+.hrow{margin-top:-.04em}
+.r3{-webkit-text-stroke:1.4px #D9C6FA}
+.hero-phone-pos{top:56%}
+.hero-phone{width:35vw;max-width:170px}
+.counts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.counts .cnt:first-child{grid-column:1/-1}
+.cnt{padding:24px 12px 24px 0}
+.counts .cnt:not(:first-child) strong{font-size:clamp(36px,11vw,52px)}
+.cnt span{font-size:14px}
+.idx-row{gap:14px;padding:22px 0}
+.idx-row b{font-size:clamp(30px,9.4vw,44px)}
+.idx-row small{font-size:11px;letter-spacing:.12em}
+.idx-thumb{width:64px}
+}
+.nav-ico-m{display:none}
+.t-touch{display:none}
+@media (hover:none){.t-fine{display:none}.t-touch{display:inline}}
+@media (max-width:640px){
+.nav-ico-d{display:none}.nav-ico-m{display:block}
+.nav-in{padding:10px 16px}
+.cline{font-size:clamp(44px,15.4vw,96px);line-height:.84}
+.clink{min-height:64px;font-size:19px;padding:0 2px}
+.clink small{font-size:10px;letter-spacing:.24em}
+.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fact{padding:22px 12px 22px 0}
+.fact:last-child:nth-child(odd){grid-column:1/-1}
+.facts.f3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts.f3 .fact:first-child{grid-column:1/-1}
+.facts.f3 .fact:last-child{grid-column:auto}
+.vgrid>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 7px)}
+.case{gap:28px}
+.case-media{gap:14px;width:100%}
+.case-media>.media-col:has(.phone){width:calc(50% - 7px)!important}
+.case-media>.media-col:has(.land){width:100%!important}
+.case-media>.media-col:has(.land)+.media-col:has(.phone):last-child{width:62%!important}
+.case-media .cap{font-size:10px;letter-spacing:.18em}
+.tl-head{flex-direction:column;align-items:flex-start;gap:6px}
+.svc li{padding:14px 4px}
+.svc li::before{min-width:24px}
+.next b{font-size:clamp(40px,13vw,70px)}
+.sub h2{font-size:clamp(40px,12vw,64px)}
+}
+@media (max-width:374px){.lang{padding:0 8px;font-size:12px}.btn{padding:0 16px}}
 </style>
 </head>
 <body>
@@ -136,12 +187,12 @@ mark{background:none;color:#6C11DF;font-weight:800}
 </div>
 <div style="display: flex; gap: 8px; align-items: center; position: relative">
 <button class="lang" type="button" onClick="{{toggleLang}}" aria-label="{{t.langLabel}}"><span class="{{esCls}}">ES</span><span aria-hidden="true">/</span><span class="{{enCls}}">EN</span></button>
-<button class="btn" type="button" aria-expanded="{{contactOpen}}" onClick="{{toggleContact}}"><span class="nav-contact-label">{{t.contact}}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
+<button class="btn" type="button" aria-label="{{t.contact}}" aria-expanded="{{contactOpen}}" onClick="{{toggleContact}}"><span class="nav-contact-label">{{t.contact}}</span><svg class="nav-ico-m" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"></path></svg><svg class="nav-ico-d" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
 <button class="btn btn-ghost menu-btn" type="button" style="color: #FFFAC9" aria-expanded="{{menuOpen}}" onClick="{{toggleMenu}}">{{menuLabel}}</button>
 <sc-if value="{{contactOpen}}" hint-placeholder-val="{{ false }}">
 <div class="drop">
 <a href="https://instagram.com/danntomas_" target="_blank" rel="noopener">Instagram <span style="font-size: 12px; opacity: .7">@danntomas_</span></a>
-<a href="https://www.tiktok.com/@nnarrenn" target="_blank" rel="noopener">TikTok <span style="font-size: 12px; opacity: .7">@nnarrenn</span></a>
+<a href="https://www.tiktok.com/@naarrenn" target="_blank" rel="noopener">TikTok <span style="font-size: 12px; opacity: .7">@naarrenn</span></a>
 <a href="https://wa.me/522211738472" target="_blank" rel="noopener">WhatsApp <span style="font-size: 12px; opacity: .7">+52 221 173 8472</span></a>
 <a href="mailto:danna.tomii@gmail.com">{{t.mail}} <span style="font-size: 12px; opacity: .7">danna.tomii@gmail.com</span></a>
 </div>
@@ -158,15 +209,15 @@ mark{background:none;color:#6C11DF;font-weight:800}
 
 <main>
 <!-- HERO -->
-<section style="position: relative; padding: clamp(110px, 14vw, 150px) 0 clamp(56px, 7vw, 90px); background: #232129">
+<section class="hero" style="position: relative; padding: clamp(110px, 14vw, 150px) 0 clamp(56px, 7vw, 90px); background: #232129">
 <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: -1px"><span class="es">Danna Tomás — Creativa digital</span><span class="en">Danna Tomás — Digital creative</span></h1>
 <div data-fx="" style="position: relative; padding: 0 8px">
-<div class="hrow r1" aria-hidden="true"><sc-for list="{{heroLetters}}" as="l" hint-placeholder-count="11"><span class="hl" data-l="">{{l.c}}</span></sc-for></div>
-<div class="hrow r2" aria-hidden="true"><sc-for list="{{heroLetters}}" as="l" hint-placeholder-count="11"><span class="hl" data-l="">{{l.c}}</span></sc-for></div>
-<div class="hrow r3" aria-hidden="true"><sc-for list="{{heroLetters}}" as="l" hint-placeholder-count="11"><span class="hl" data-l="">{{l.c}}</span></sc-for></div>
+<div class="hrow r1" aria-hidden="true"><sc-for list="{{heroWords}}" as="w" hint-placeholder-count="2"><span class="hw"><sc-for list="{{w.letters}}" as="l" hint-placeholder-count="5"><span class="hl" data-l="">{{l.c}}</span></sc-for></span></sc-for></div>
+<div class="hrow r2" aria-hidden="true"><sc-for list="{{heroWords}}" as="w" hint-placeholder-count="2"><span class="hw"><sc-for list="{{w.letters}}" as="l" hint-placeholder-count="5"><span class="hl" data-l="">{{l.c}}</span></sc-for></span></sc-for></div>
+<div class="hrow r3" aria-hidden="true"><sc-for list="{{heroWords}}" as="w" hint-placeholder-count="2"><span class="hw"><sc-for list="{{w.letters}}" as="l" hint-placeholder-count="5"><span class="hl" data-l="">{{l.c}}</span></sc-for></span></sc-for></div>
 <div class="hero-phone-pos">
 <div data-hero-phone="">
-<div class="phone" data-cur="ver" style="width: clamp(88px, 16vw, 250px)">
+<div class="phone hero-phone" data-cur="ver">
 <div class="scr"><div class="notch"></div>
 <video data-auto="" muted="{{ true }}" loop="{{ true }}" playsinline="" preload="metadata" poster="assets/sandmade-coleccion-sense-fw26-27-video-01-2-sense-fw26-27-portada.jpg" src="assets/sandmade-coleccion-sense-fw26-27-video-01-2-sense-fw26-27.mp4" aria-label="{{t.heroVideo}}"></video>
 </div>
@@ -269,7 +320,7 @@ mark{background:none;color:#6C11DF;font-weight:800}
 <button class="clink" type="button" onClick="{{copyEmail}}" aria-label="{{t.copyLabel}}"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>{{t.mail}}</small>danna.tomii@gmail.com</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></button>
 <a class="clink" href="https://wa.me/522211738472" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>WhatsApp</small>+52 221 173 8472</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 <a class="clink" href="https://instagram.com/danntomas_" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>Instagram</small>@danntomas_</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
-<a class="clink" href="https://www.tiktok.com/@nnarrenn" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>TikTok</small>@nnarrenn</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
+<a class="clink" href="https://www.tiktok.com/@naarrenn" target="_blank" rel="noopener"><span style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><small>TikTok</small>@naarrenn</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 </div>
 <footer style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding-top: 40px">
 <span><span class="es">Danna Tomás · Creativa digital</span><span class="en">Danna Tomás · Digital creative</span></span><span>Dah! Haus · Playa del Carmen, Q. Roo</span>
@@ -470,7 +521,7 @@ class Component extends DCLogic {
     ];
     const sections = sec.map((x, i) => ({ n: x[0], title: L(x[1], x[2]), tags: L(x[3], x[4]), href: x[5], img: this.B(x[6]), hover: () => { if (this.state.pv !== i) this.setState({ pv: i }); } }));
     return Object.assign(this.kitVals(), {
-      heroLetters: 'DANNA TOMÁS'.split('').map((c) => ({ c: c === ' ' ? ' ' : c })),
+      heroWords: ['DANNA', 'TOMÁS'].map((w) => ({ letters: w.split('').map((c) => ({ c })) })),
       brandsLoop: brands.concat(brands).map((name) => ({ name })),
       counts: [
         { pre: '', val: (36.4 + (60.6 - 36.4) * cp).toFixed(1) + 'K', label: L('seguidores en Sandmade (desde 36.4K)', 'Sandmade followers (up from 36.4K)') },
